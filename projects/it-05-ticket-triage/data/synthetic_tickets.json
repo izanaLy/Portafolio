@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "synthetic": true,
+    "description": "Tickets ficticios escritos a mano para demostrar y probar el simulador. No provienen de ninguna organización real; los identificadores de solicitante, las fechas y los hechos descritos son inventados.",
+    "language": "es",
+    "expected_labels_note": "El bloque 'expected' lo definió el autor del proyecto según su criterio y sirve solo como prueba de regresión de las reglas. No es una medida de precisión sobre datos reales."
+  },
+  "tickets": [
+    {
+      "id": "TKT-0001",
+      "title": "Olvidé mi contraseña",
+      "description": "No recuerdo mi contraseña y necesito restablecerla para entrar al sistema de inventario.",
+      "requester": "usuario-001",
+      "created_at": "2026-01-05T08:15:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "cuenta_acceso", "impact": "bajo", "urgency": "medio", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0002",
+      "title": "Impresora atascada",
+      "description": "La impresora del segundo piso tiene un atasco de papel. Puedo usar la del primer piso mientras tanto.",
+      "requester": "usuario-002",
+      "created_at": "2026-01-05T08:40:00",
+      "affected_users": 1,
+      "workaround_available": true,
+      "expected": {"category": "impresion", "impact": "bajo", "urgency": "bajo", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0003",
+      "title": "VPN caída para todo el equipo",
+      "description": "Todo el equipo remoto no puede conectarse a la VPN desde esta mañana. Urgente.",
+      "requester": "usuario-003",
+      "created_at": "2026-01-05T09:05:00",
+      "affected_users": 8,
+      "workaround_available": false,
+      "expected": {"category": "red", "impact": "medio", "urgency": "alto", "priority": "P2", "escalation_level": "nivel_2"}
+    },
+    {
+      "id": "TKT-0004",
+      "title": "Servidor de archivos fuera de servicio",
+      "description": "El servidor de archivos no responde y la producción está detenida.",
+      "requester": "usuario-004",
+      "created_at": "2026-01-05T09:20:00",
+      "affected_users": 120,
+      "workaround_available": false,
+      "expected": {"category": "infraestructura", "impact": "alto", "urgency": "alto", "priority": "P1", "escalation_level": "nivel_3"}
+    },
+    {
+      "id": "TKT-0005",
+      "title": "Correo sospechoso con enlace",
+      "description": "Recibí un correo sospechoso que pide mis credenciales y hice clic en el enlace. Parece phishing.",
+      "requester": "usuario-005",
+      "created_at": "2026-01-05T10:00:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "seguridad", "impact": "medio", "urgency": "medio", "priority": "P2", "escalation_level": "seguridad"}
+    },
+    {
+      "id": "TKT-0006",
+      "title": "Laptop no enciende",
+      "description": "Mi laptop no enciende desde ayer, ya probé con otro cargador. No puedo trabajar.",
+      "requester": "usuario-006",
+      "created_at": "2026-01-05T10:30:00",
+      "affected_users": 1,
+      "workaround_available": false,
+      "expected": {"category": "hardware", "impact": "bajo", "urgency": "alto", "priority": "P3", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0007",
+      "title": "Solicitud de licencia de Excel",
+      "description": "Necesito instalar Excel en mi equipo nuevo. No es urgente.",
+      "requester": "usuario-007",
+      "created_at": "2026-01-05T11:00:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "software", "impact": "bajo", "urgency": "bajo", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0008",
+      "title": "Wi-Fi intermitente en sala de reuniones",
+      "description": "El Wi-Fi se corta cada pocos minutos en la sala B durante las videollamadas. Hay cable ethernet como alternativa.",
+      "requester": "usuario-008",
+      "created_at": "2026-01-05T11:20:00",
+      "affected_users": 4,
+      "workaround_available": true,
+      "expected": {"category": "red", "impact": "medio", "urgency": "bajo", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0009",
+      "title": "Base de datos de facturación lenta",
+      "description": "Las consultas a la base de datos tardan minutos y el área de facturación no puede trabajar.",
+      "requester": "usuario-009",
+      "created_at": "2026-01-05T13:10:00",
+      "affected_users": 15,
+      "workaround_available": false,
+      "expected": {"category": "infraestructura", "impact": "alto", "urgency": "alto", "priority": "P1", "escalation_level": "nivel_3"}
+    },
+    {
+      "id": "TKT-0010",
+      "title": "Posible ransomware en equipo de contabilidad",
+      "description": "Aparecen archivos cifrados y una nota de rescate en un equipo de contabilidad. Urgente: desconectamos el cable de red.",
+      "requester": "usuario-010",
+      "created_at": "2026-01-05T13:45:00",
+      "affected_users": 3,
+      "workaround_available": false,
+      "expected": {"category": "seguridad", "impact": "alto", "urgency": "alto", "priority": "P1", "escalation_level": "seguridad"}
+    },
+    {
+      "id": "TKT-0011",
+      "title": "Teams no abre",
+      "description": "Teams se cierra al abrirlo. Ya probé reiniciar el equipo.",
+      "requester": "usuario-011",
+      "created_at": "2026-01-05T14:05:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "correo_colaboracion", "impact": "bajo", "urgency": "medio", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0012",
+      "title": "Acceso a carpeta compartida",
+      "description": "Necesito permisos de lectura en la carpeta de Recursos Humanos para mi nuevo rol. Solicitud sin prisa.",
+      "requester": "usuario-012",
+      "created_at": "2026-01-05T14:30:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "cuenta_acceso", "impact": "bajo", "urgency": "bajo", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0013",
+      "title": "Alta de usuario para nuevo empleado",
+      "description": "Alta de usuario y cuenta de correo para un empleado que inicia el lunes.",
+      "requester": "usuario-013",
+      "created_at": "2026-01-05T15:00:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "cuenta_acceso", "impact": "bajo", "urgency": "medio", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0014",
+      "title": "Pantalla azul recurrente",
+      "description": "Windows muestra una pantalla azul cada día. Ya reinicié varias veces.",
+      "requester": "usuario-014",
+      "created_at": "2026-01-05T15:20:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "software", "impact": "bajo", "urgency": "medio", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0015",
+      "title": "Sin internet en toda la sucursal",
+      "description": "Toda la oficina de la sucursal está sin internet desde las 8:00. Clientes esperando.",
+      "requester": "usuario-015",
+      "created_at": "2026-01-06T08:10:00",
+      "affected_users": 25,
+      "workaround_available": false,
+      "expected": {"category": "red", "impact": "alto", "urgency": "alto", "priority": "P1", "escalation_level": "nivel_3"}
+    },
+    {
+      "id": "TKT-0016",
+      "title": "Almacenamiento casi lleno en servidor de respaldos",
+      "description": "El almacenamiento del servidor de respaldos está al 92 % y los backups nocturnos podrían fallar esta semana.",
+      "requester": "usuario-016",
+      "created_at": "2026-01-06T08:50:00",
+      "affected_users": 200,
+      "workaround_available": null,
+      "expected": {"category": "infraestructura", "impact": "alto", "urgency": "medio", "priority": "P2", "escalation_level": "nivel_2"}
+    },
+    {
+      "id": "TKT-0017",
+      "title": "Monitor parpadea",
+      "description": "El monitor parpadea de vez en cuando. Uso la pantalla del laptop mientras tanto.",
+      "requester": "usuario-017",
+      "created_at": "2026-01-06T09:30:00",
+      "affected_users": 1,
+      "workaround_available": true,
+      "expected": {"category": "hardware", "impact": "bajo", "urgency": "bajo", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0018",
+      "title": "Excel se congela con archivos grandes",
+      "description": "Excel se congela al abrir archivos grandes en el departamento de finanzas.",
+      "requester": "usuario-018",
+      "created_at": "2026-01-06T10:10:00",
+      "affected_users": 5,
+      "workaround_available": null,
+      "expected": {"category": "software", "impact": "medio", "urgency": "medio", "priority": "P3", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0019",
+      "title": "Impresora de ventas sin tóner",
+      "description": "La impresora del departamento de ventas no imprime porque falta tóner y no hay repuesto.",
+      "requester": "usuario-019",
+      "created_at": "2026-01-06T10:40:00",
+      "affected_users": 6,
+      "workaround_available": false,
+      "expected": {"category": "impresion", "impact": "medio", "urgency": "medio", "priority": "P3", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0020",
+      "title": "Cuenta bloqueada antes de una reunión",
+      "description": "Mi cuenta quedó bloqueada y no puedo iniciar sesión. Tengo una reunión con un cliente en una hora, urgente.",
+      "requester": "usuario-020",
+      "created_at": "2026-01-06T11:15:00",
+      "affected_users": 1,
+      "workaround_available": false,
+      "expected": {"category": "cuenta_acceso", "impact": "bajo", "urgency": "alto", "priority": "P3", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0021",
+      "title": "Alerta de intentos de ingreso a mi cuenta",
+      "description": "El sistema avisó de varios intentos de acceso no autorizado a mi cuenta desde otro país. Ya cambié mi contraseña.",
+      "requester": "usuario-021",
+      "created_at": "2026-01-06T11:50:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "seguridad", "impact": "medio", "urgency": "medio", "priority": "P2", "escalation_level": "seguridad"}
+    },
+    {
+      "id": "TKT-0022",
+      "title": "Sugerencia para el calendario compartido",
+      "description": "Sería útil añadir recordatorios al calendario compartido del equipo. No es urgente.",
+      "requester": "usuario-022",
+      "created_at": "2026-01-06T13:00:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "correo_colaboracion", "impact": "bajo", "urgency": "bajo", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0023",
+      "title": "Necesito ayuda",
+      "description": "Algo no funciona como antes.",
+      "requester": "usuario-023",
+      "created_at": "2026-01-06T13:30:00",
+      "affected_users": 1,
+      "workaround_available": null,
+      "expected": {"category": "otros", "impact": "bajo", "urgency": "medio", "priority": "P4", "escalation_level": "nivel_1"}
+    },
+    {
+      "id": "TKT-0024",
+      "title": "Hipervisor reinició máquinas virtuales",
+      "description": "El host del hipervisor se reinició solo y las máquinas virtuales de pruebas no arrancan. Tres desarrolladores no pueden trabajar.",
+      "requester": "usuario-024",
+      "created_at": "2026-01-06T14:10:00",
+      "affected_users": 3,
+      "workaround_available": false,
+      "expected": {"category": "infraestructura", "impact": "medio", "urgency": "alto", "priority": "P2", "escalation_level": "nivel_2"}
+    }
+  ]
+}
