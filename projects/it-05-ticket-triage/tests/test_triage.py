@@ -64,3 +64,77 @@ def test_summarize_counts():
     assert summary["por_categoria"] == {"cuenta_acceso": 2, "red": 1}
     assert sum(summary["por_prioridad"].values()) == 3
     assert sum(summary["por_escalacion"].values()) == 3
+
+
+# --- seguridad P1 y política conservadora (revisión PR #2) ---------------------
+
+
+def test_security_p1_end_to_end_uses_independent_channel():
+    result = triage(
+        make(
+            title="Posible ransomware",
+            description="Archivos cifrados y nota de rescate. Urgente.",
+            affected_users=3,
+        )
+    )
+    assert result.category == "seguridad"
+    assert result.priority.label == "P1"
+    assert result.escalation_level == "seguridad"
+    assert result.escalate is True
+    assert result.escalate_immediately is True
+    assert result.escalation_team == "Equipo de seguridad"
+    reasons = " ".join(result.reasons)
+    assert "independiente de la jerarquía nivel 1/2/3" in reasons
+    assert "atención inmediata por el canal de seguridad" in reasons
+
+
+def test_security_below_p1_is_escalated_but_not_immediately():
+    result = triage(
+        make(title="Posible phishing", description="Correo sospechoso, no hice clic.")
+    )
+    assert result.category == "seguridad"
+    assert result.priority.label == "P2"  # piso de seguridad
+    assert result.escalation_level == "seguridad"
+    assert result.escalate is True
+    assert result.escalate_immediately is False
+
+
+def test_ransomware_with_workaround_remains_p1():
+    base = dict(
+        title="Ransomware en contabilidad",
+        description="Archivos cifrados. Desconectamos el equipo de la red.",
+        affected_users=3,
+    )
+    sin = triage(make(**base))
+    con = triage(make(workaround_available=True, **base))
+    assert con.urgency == sin.urgency
+    assert con.priority == sin.priority
+    assert con.priority.label == "P1"
+    assert con.escalate_immediately is True
+    assert any("señal crítica de seguridad" in r for r in con.reasons)
+
+
+def test_critical_signal_urgency_is_not_lowered_by_workaround_end_to_end():
+    base = dict(title="Acceso no autorizado", description="Intentos de acceso no autorizado a una cuenta.")
+    sin = triage(make(**base))
+    con = triage(make(workaround_available=True, **base))
+    assert con.urgency == sin.urgency
+    assert con.urgency.label == "medio"
+    assert con.priority == sin.priority
+
+
+def test_non_critical_security_ticket_still_gets_workaround_reduction():
+    base = dict(title="Posible phishing", description="Correo sospechoso, no hice clic.")
+    sin = triage(make(**base))
+    con = triage(make(workaround_available=True, **base))
+    assert sin.urgency.label == "medio"
+    assert con.urgency.label == "bajo"
+    assert con.category == "seguridad" and con.priority.label == "P2"  # el piso sigue vigente
+
+
+def test_security_category_always_maps_to_security_channel_on_dataset():
+    from ticket_triage import load_dataset
+
+    for ticket in load_dataset().tickets:
+        result = triage(ticket)
+        assert (result.category == "seguridad") == (result.escalation_level == "seguridad")

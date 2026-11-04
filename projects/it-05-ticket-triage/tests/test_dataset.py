@@ -4,7 +4,7 @@ import re
 import pytest
 
 from ticket_triage import load_dataset, triage
-from ticket_triage.dataset import DEFAULT_DATASET
+from ticket_triage.dataset import DEFAULT_DATASET, parse_dataset
 
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 PHONE = re.compile(r"(?<!\d)(?:\+?\d[\d\s-]{7,}\d)(?!\d)")
@@ -101,3 +101,70 @@ def test_loader_rejects_missing_tickets_key(tmp_path):
     path = _write(tmp_path, {"meta": {"synthetic": True}})
     with pytest.raises(ValueError, match="tickets"):
         load_dataset(path)
+
+
+# --- validación estructural (observaciones de la revisión del PR #2) -----------
+
+GOOD_TICKET = {"id": "X", "title": "t", "description": "d"}
+
+
+@pytest.mark.parametrize(
+    "payload, fragment",
+    [
+        (None, "no null"),
+        ([], "no list"),
+        ("texto", "no str"),
+        ({"tickets": []}, "'meta'"),
+        ({"meta": None, "tickets": []}, "'meta' debe ser un objeto"),
+        ({"meta": [], "tickets": []}, "'meta' debe ser un objeto"),
+        ({"meta": "x", "tickets": []}, "'meta' debe ser un objeto"),
+        ({"meta": {"synthetic": True}, "tickets": None}, "'tickets' debe ser una lista"),
+        ({"meta": {"synthetic": True}, "tickets": {"a": 1}}, "'tickets' debe ser una lista"),
+        ({"meta": {"synthetic": True}, "tickets": "abc"}, "'tickets' debe ser una lista"),
+        ({"meta": {"synthetic": True}, "tickets": ["hola"]}, "tickets[0] debe ser un objeto"),
+        ({"meta": {"synthetic": True}, "tickets": [None]}, "tickets[0] debe ser un objeto"),
+        (
+            {"meta": {"synthetic": True}, "tickets": [GOOD_TICKET, 5]},
+            "tickets[1] debe ser un objeto",
+        ),
+        (
+            {"meta": {"synthetic": True}, "tickets": [{"id": "X"}]},
+            "tickets[0]: Campo obligatorio",
+        ),
+        (
+            {"meta": {"synthetic": True}, "tickets": [dict(GOOD_TICKET, expected=["a"])]},
+            "'expected' debe ser un objeto",
+        ),
+        (
+            {"meta": {"synthetic": True}, "tickets": [dict(GOOD_TICKET, expected=None)]},
+            "'expected' debe ser un objeto",
+        ),
+        (
+            {"meta": {"synthetic": True}, "tickets": [dict(GOOD_TICKET, expected={"foo": "bar"})]},
+            "claves no permitidas",
+        ),
+        (
+            {"meta": {"synthetic": True}, "tickets": [dict(GOOD_TICKET, expected={"priority": 1})]},
+            "expected.priority",
+        ),
+        (
+            {"meta": {"synthetic": True}, "tickets": [dict(GOOD_TICKET, expected={"priority": ""})]},
+            "expected.priority",
+        ),
+    ],
+)
+def test_parse_dataset_raises_explanatory_value_error(payload, fragment):
+    with pytest.raises(ValueError) as excinfo:
+        parse_dataset(payload)
+    assert fragment in str(excinfo.value)
+
+
+def test_parse_dataset_accepts_valid_minimal_payload():
+    ds = parse_dataset(
+        {
+            "meta": {"synthetic": True},
+            "tickets": [dict(GOOD_TICKET, expected={"priority": "P4"})],
+        }
+    )
+    assert [t.id for t in ds.tickets] == ["X"]
+    assert ds.expected == {"X": {"priority": "P4"}}

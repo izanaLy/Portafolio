@@ -4,9 +4,9 @@ Simulador en Python que **clasifica y prioriza tickets de soporte técnico** con
 
 - Núcleo solo con la **biblioteca estándar** de Python (sin dependencias ni APIs de pago).
 - Datos **100 % sintéticos** (ver [`data/synthetic_tickets.json`](data/synthetic_tickets.json)).
-- Pruebas con **pytest** (93 pruebas; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
+- Pruebas con **pytest** (187 pruebas; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
 
-> **Estado:** implementado y probado localmente el 2026-11-04; pendiente de revisión en el pull request. Es una **demostración de reglas sobre datos ficticios**: no se ha usado con tickets reales ni se presentan métricas de rendimiento operativo.
+> **Estado:** implementado y probado localmente el 2026-11-04. La revisión técnica del PR #2 pidió ajustes (validación del cargador, política de urgencia en seguridad y documentación del canal de seguridad); están aplicados y pendientes de revisión final. Es una **demostración de reglas sobre datos ficticios**: no se ha usado con tickets reales ni se presentan métricas de rendimiento operativo.
 
 ## Estructura
 
@@ -104,6 +104,7 @@ Se toma el **máximo** de las reglas aplicables:
 - **Baja:** «no es urgente», «sin prisa», «cuando pueda», «cuando tengan tiempo», «consulta», «solicitud», «sugerencia», «mejora», «cosmético». Estas frases se retiran del texto antes de buscar urgencia alta, de modo que «no es urgente» no cuenta como «urgente».
 - **Media:** valor por defecto.
 - Si `workaround_available = true`, la urgencia baja un nivel (mínimo bajo). Si es `false`, no cambia, pero queda anotado en las razones.
+- **Excepción conservadora para seguridad:** si el texto contiene una *señal crítica de seguridad* (`ransomware`, `ciberataque`, `hackeo`, `malware`, `fuga de datos`, `datos expuestos`, `credenciales expuestas`, `credenciales filtradas`, `cuenta comprometida`, `acceso no autorizado`), una alternativa temporal **no** reduce la urgencia, porque aislar un equipo no elimina el riesgo activo. La razón queda anotada en el resultado. Es un supuesto de laboratorio **acotado a esa lista** (`CRITICAL_SECURITY_SIGNALS` en `rules.py`), no una regla universal: otros incidentes de seguridad, como un phishing sin clic, sí pueden bajar por alternativa temporal, y fuera de seguridad la regla normal no cambia.
 
 ### 4. Prioridad (matriz impacto × urgencia)
 
@@ -122,6 +123,27 @@ Los incidentes de `seguridad` nunca bajan de **P2**.
 3. Prioridad P2 → **nivel 2**.
 4. Categoría `infraestructura` → **nivel 2** como mínimo.
 5. En otro caso → **nivel 1** (sin escalación).
+
+**`seguridad` es un canal independiente, no un escalón de la jerarquía nivel 1/2/3:** toda la categoría va al equipo de seguridad, sea cual sea la prioridad, y `escalate` es `true`. La urgencia de atención se expresa aparte con `escalate_immediately`, que depende solo de la prioridad (P1) y también aplica a ese canal. Un incidente de seguridad P1 produce `escalation_level = "seguridad"` y `escalate_immediately = true`, y sus razones lo explican; uno de prioridad P2–P4 va al mismo canal con `escalate_immediately = false`.
+
+## Parámetros editables y supuestos de laboratorio
+
+Los umbrales y las reglas de arriba son **supuestos de laboratorio** para demostrar el razonamiento. **No** son un SLA ni una implementación estándar de ITIL, y no se calibraron en ninguna organización. Están visibles como constantes en [`ticket_triage/rules.py`](ticket_triage/rules.py) para poder cambiarlos:
+
+| Parámetro | Valor actual | Constante |
+|---|---|---|
+| Usuarios afectados para impacto medio / alto | 2 / 10 | `USERS_FOR_MEDIUM_IMPACT`, `USERS_FOR_HIGH_IMPACT` |
+| Impacto mínimo por categoría | `infraestructura` y `seguridad`: medio | `CATEGORY_IMPACT_FLOOR` |
+| Prioridad mínima de seguridad | P2 | `SECURITY_PRIORITY_FLOOR` |
+| Escalación mínima por categoría | `infraestructura`: nivel 2 | `CATEGORY_MIN_ESCALATION` |
+| Señales críticas de seguridad (sin reducción por alternativa temporal) | lista de 10 señales | `CRITICAL_SECURITY_SIGNALS` |
+| Matriz impacto × urgencia | tabla de la sección 4 | `PRIORITY_MATRIX` |
+
+Una prueba (`test_visible_parameters_have_the_documented_values`) fija los valores documentados, de modo que cambiar uno obliga a actualizar también esta tabla.
+
+## Validación de los datos de entrada
+
+`load_dataset` / `parse_dataset` validan la estructura completa y lanzan `ValueError` con un mensaje que indica dónde está el problema: la raíz debe ser un objeto; `meta` debe ser un objeto con `synthetic = true`; `tickets` debe ser una lista de objetos; y si un ticket trae `expected`, debe ser un objeto con claves permitidas (`category`, `impact`, `urgency`, `priority`, `escalation_level`) y valores de texto. El CLI convierte cualquiera de esos errores, además de archivos inexistentes, directorios, JSON roto o codificación inválida, en `Error: …` por stderr y **código de salida 2**, sin trazas.
 
 ## Esquema de ticket (para `software-09` y `data-02`)
 
@@ -147,14 +169,15 @@ pip install pytest
 python -m pytest -v
 ```
 
-Cubren validación del modelo, cada regla (incluida la monotonía de la matriz de prioridad), el caso «no es urgente», el cargador de datos, la ausencia de patrones de datos personales en los tickets y el CLI. Ver [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md).
+Cubren validación del modelo, cada regla (incluida la monotonía de la matriz de prioridad), el caso «no es urgente», la política de señales críticas de seguridad, el canal de seguridad P1, el cargador de datos con entradas estructuralmente inválidas, la ausencia de patrones de datos personales en los tickets y el CLI con códigos de salida. Ver [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md).
 
 ## Limitaciones
 
 - **Las reglas son palabras clave**, no comprensión del lenguaje: no detectan negaciones generales («esto no es phishing»), sarcasmo, errores ortográficos ni sinónimos que no estén en las listas.
 - **Solo español.** Un ticket en otro idioma probablemente caerá en `otros`.
 - **Las etiquetas esperadas las definió el autor** del proyecto, y una de ellas motivó un ajuste de pesos después de ver el resultado (TKT-0011, ver `docs/TEST_RESULTS.md`). Por eso la prueba de regresión detecta cambios involuntarios en las reglas, pero **no es una medida de precisión** ni valida las reglas con datos reales.
-- Los umbrales (por ejemplo, 10 usuarios = impacto alto) y la matriz son decisiones de diseño razonables, no valores calibrados en una organización concreta.
+- Los umbrales (por ejemplo, 10 usuarios = impacto alto), la matriz y la lista de señales críticas de seguridad son supuestos de laboratorio, no valores calibrados en una organización concreta ni un SLA/ITIL universal (ver «Parámetros editables»).
+- La excepción de urgencia para señales críticas de seguridad es una lista corta de palabras clave: un incidente grave descrito con otras palabras no activará la excepción.
 - Los datos son ficticios; no se hicieron mediciones de tiempo de resolución, carga ni satisfacción.
 - No hay interfaz web ni integración con sistemas de tickets reales; eso queda para `software-09`.
 

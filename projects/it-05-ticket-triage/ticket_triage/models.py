@@ -109,7 +109,15 @@ class Ticket:
 
 @dataclass(frozen=True)
 class TriageResult:
-    """Resultado explicable del triaje de un ticket."""
+    """Resultado explicable del triaje de un ticket.
+
+    ``escalation_level`` toma uno de ``nivel_1``, ``nivel_2``, ``nivel_3`` (una
+    jerarquía) o ``seguridad`` (un canal independiente, no un nivel superior ni
+    inferior). ``escalate`` es ``True`` siempre que no sea ``nivel_1``.
+    ``escalate_immediately`` depende solo de la prioridad (P1) y es independiente
+    del canal: un P1 de seguridad tiene ``escalation_level="seguridad"`` y
+    ``escalate_immediately=True``.
+    """
 
     ticket_id: str
     category: str

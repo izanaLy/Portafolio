@@ -42,7 +42,7 @@
     "status": "in_review",
     "started_at": "2026-11-04",
     "completed_at": null,
-    "notes": "Implementado con datos sintéticos y 93 pruebas pytest que pasan (ver projects/it-05-ticket-triage/docs/TEST_RESULTS.md). Pendiente de revisión del pull request; completed_at se registrará al fusionarlo."
+    "notes": "Implementado con datos sintéticos y 187 pruebas pytest que pasan (ver projects/it-05-ticket-triage/docs/TEST_RESULTS.md). Ajustes de la primera revisión aplicados; pendiente de revisión final del pull request. completed_at se registrará al fusionarlo."
   },
   {
     "id": "it-06",

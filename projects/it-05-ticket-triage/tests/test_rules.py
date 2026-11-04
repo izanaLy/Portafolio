@@ -189,3 +189,90 @@ def test_escalation_rules(category, priority, expected):
     level, reasons = rules.decide_escalation(category, priority)
     assert level == expected
     assert reasons
+
+
+# --- política conservadora: señales críticas de seguridad (revisión PR #2) -----
+
+
+@pytest.mark.parametrize("signal", rules.CRITICAL_SECURITY_SIGNALS)
+def test_workaround_does_not_lower_urgency_for_critical_security_signals(signal):
+    text = rules.normalize(f"Se detecta {signal} en un equipo")
+    without, _ = rules.assess_urgency(text, None)
+    with_workaround, reasons = rules.assess_urgency(text, True)
+    assert with_workaround == without
+    assert any("señal crítica de seguridad" in r for r in reasons)
+
+
+def test_ransomware_with_workaround_stays_high_urgency():
+    text = rules.normalize("Ransomware en el equipo, ya lo desconectamos de la red")
+    assert rules.assess_urgency(text, True)[0] == Level.HIGH
+
+
+def test_critical_signal_exception_is_not_universal():
+    """El phishing no es una señal crítica: la alternativa temporal sí baja la urgencia."""
+    text = rules.normalize("Posible phishing, no hice clic")
+    assert "phishing" not in rules.CRITICAL_SECURITY_SIGNALS
+    assert rules.assess_urgency(text, None)[0] == Level.MEDIUM
+    assert rules.assess_urgency(text, True)[0] == Level.LOW
+
+
+def test_workaround_still_lowers_urgency_outside_security():
+    text = rules.normalize("La impresora no imprime")
+    assert rules.assess_urgency(text, True)[0] == Level.LOW
+
+
+def test_critical_signals_are_security_keywords():
+    """Toda señal crítica debe clasificar el ticket como seguridad."""
+    assert set(rules.CRITICAL_SECURITY_SIGNALS) <= set(rules.CATEGORY_KEYWORDS["seguridad"])
+
+
+def test_workaround_false_does_not_change_urgency_for_critical_signals():
+    text = rules.normalize("Fuga de datos detectada")
+    assert rules.assess_urgency(text, False)[0] == rules.assess_urgency(text, None)[0]
+
+
+# --- canal de seguridad independiente de la jerarquía 1/2/3 --------------------
+
+
+def test_security_p1_goes_to_security_channel_and_explains_it():
+    level, reasons = rules.decide_escalation("seguridad", Priority.P1)
+    assert level == rules.SECURITY
+    joined = " ".join(reasons)
+    assert "independiente de la jerarquía nivel 1/2/3" in joined
+    assert "P1" in joined and "inmediata" in joined
+
+
+@pytest.mark.parametrize("priority", [Priority.P2, Priority.P3, Priority.P4])
+def test_security_below_p1_has_no_immediate_reason(priority):
+    level, reasons = rules.decide_escalation("seguridad", priority)
+    assert level == rules.SECURITY
+    assert "independiente de la jerarquía nivel 1/2/3" in " ".join(reasons)
+    assert "inmediata" not in " ".join(reasons)
+
+
+def test_security_is_not_part_of_the_numbered_hierarchy():
+    assert rules.SECURITY not in (rules.LEVEL_1, rules.LEVEL_2, rules.LEVEL_3)
+
+
+# --- parámetros visibles y editables -------------------------------------------
+
+
+def test_visible_parameters_have_the_documented_values():
+    assert rules.USERS_FOR_MEDIUM_IMPACT == 2
+    assert rules.USERS_FOR_HIGH_IMPACT == 10
+    assert rules.SECURITY_PRIORITY_FLOOR == Priority.P2
+    assert rules.CATEGORY_MIN_ESCALATION == {"infraestructura": rules.LEVEL_2}
+    assert rules.CATEGORY_IMPACT_FLOOR == {
+        "infraestructura": Level.MEDIUM,
+        "seguridad": Level.MEDIUM,
+    }
+
+
+def test_category_min_escalation_is_applied_and_explained():
+    level, reasons = rules.decide_escalation("infraestructura", Priority.P4)
+    assert level == rules.LEVEL_2
+    assert any("infraestructura" in r for r in reasons)
+
+
+def test_category_min_escalation_does_not_lower_higher_levels():
+    assert rules.decide_escalation("infraestructura", Priority.P1)[0] == rules.LEVEL_3

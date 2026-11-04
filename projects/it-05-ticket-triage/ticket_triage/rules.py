@@ -296,10 +296,33 @@ LOW_URGENCY_KEYWORDS: Tuple[str, ...] = (
 )
 
 
+# Señales de riesgo activo en seguridad. Supuesto de laboratorio, acotado a esta
+# lista y editable: si aparece alguna, una alternativa temporal NO reduce la
+# urgencia (p. ej. aislar un equipo no elimina el riesgo de un ransomware).
+# Los demás incidentes de seguridad (p. ej. un phishing sin clic) no están aquí y
+# conservan la reducción normal por alternativa temporal.
+CRITICAL_SECURITY_SIGNALS: Tuple[str, ...] = (
+    "ransomware",
+    "ciberataque",
+    "hackeo",
+    "malware",
+    "fuga de datos",
+    "datos expuestos",
+    "credenciales expuestas",
+    "credenciales filtradas",
+    "cuenta comprometida",
+    "acceso no autorizado",
+)
+
+
 def assess_urgency(
     normalized_text: str, workaround_available: "bool | None"
 ) -> Tuple[Level, List[str]]:
-    """Urgencia por palabras clave y existencia de alternativa temporal."""
+    """Urgencia por palabras clave y existencia de alternativa temporal.
+
+    La reducción por alternativa temporal no se aplica si el texto contiene una
+    señal de ``CRITICAL_SECURITY_SIGNALS``.
+    """
     reasons: List[str] = []
 
     low_matches = find_matches(normalized_text, LOW_URGENCY_KEYWORDS)
@@ -318,7 +341,14 @@ def assess_urgency(
         level = Level.MEDIUM
         reasons.append("sin palabras de urgencia: urgencia base media")
 
-    if workaround_available is True and level > Level.LOW:
+    critical = find_matches(normalized_text, CRITICAL_SECURITY_SIGNALS)
+    if workaround_available is True and critical:
+        reasons.append(
+            "señal crítica de seguridad ("
+            + ", ".join(f"«{m}»" for m in critical)
+            + "): la alternativa temporal no reduce la urgencia"
+        )
+    elif workaround_available is True and level > Level.LOW:
         level = Level(level - 1)
         reasons.append("existe alternativa temporal: la urgencia baja un nivel")
     elif workaround_available is False:
@@ -376,14 +406,37 @@ TEAM_NAMES: Dict[str, str] = {
 }
 
 
+# Nivel mínimo de escalación por categoría (supuesto de laboratorio, editable).
+CATEGORY_MIN_ESCALATION: Dict[str, str] = {
+    "infraestructura": LEVEL_2,
+}
+
+
 def decide_escalation(category: str, priority: Priority) -> Tuple[str, List[str]]:
-    """Devuelve (nivel de escalación, razones). Se aplica la primera regla que coincida."""
+    """Devuelve (nivel de escalación, razones). Se aplica la primera regla que coincida.
+
+    ``seguridad`` es un **canal independiente**, no un escalón de la jerarquía
+    nivel 1/2/3: toda la categoría se deriva al equipo de seguridad, sea cual sea
+    la prioridad. La urgencia se expresa aparte con ``escalate_immediately``
+    (prioridad P1), que también aplica a ese canal.
+    """
     if category == "seguridad":
-        return SECURITY, ["categoría «seguridad»: se deriva siempre al equipo de seguridad"]
+        reasons = [
+            "categoría «seguridad»: se deriva al equipo de seguridad, canal "
+            "independiente de la jerarquía nivel 1/2/3"
+        ]
+        if priority == Priority.P1:
+            reasons.append(
+                "prioridad P1: atención inmediata por el canal de seguridad"
+            )
+        return SECURITY, reasons
     if priority == Priority.P1:
         return LEVEL_3, ["prioridad P1: escalación inmediata a nivel 3"]
     if priority == Priority.P2:
         return LEVEL_2, ["prioridad P2: escalación a nivel 2"]
-    if category == "infraestructura":
-        return LEVEL_2, ["categoría «infraestructura»: nivel 2 como mínimo"]
+    minimum = CATEGORY_MIN_ESCALATION.get(category)
+    if minimum is not None:
+        return minimum, [
+            f"categoría «{category}»: {minimum.replace('_', ' ')} como mínimo"
+        ]
     return LEVEL_1, ["sin criterios de escalación: se atiende en nivel 1"]
