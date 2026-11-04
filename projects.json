@@ -1,0 +1,812 @@
+[
+  {
+    "id": "it-01",
+    "category": "IT",
+    "title": "Active Directory Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-02",
+    "category": "IT",
+    "title": "Windows Server DNS",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-03",
+    "category": "IT",
+    "title": "Windows Server DHCP",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-04",
+    "category": "IT",
+    "title": "PowerShell User Provisioning",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-05",
+    "category": "IT",
+    "title": "Ticket Triage Simulator",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-06",
+    "category": "IT",
+    "title": "Windows Event Log Analyzer",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-07",
+    "category": "IT",
+    "title": "Network Topology Documentation",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-08",
+    "category": "IT",
+    "title": "VLAN Segmentation Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-09",
+    "category": "IT",
+    "title": "Cisco Switch Configuration",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-10",
+    "category": "IT",
+    "title": "Linux Server Hardening",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-11",
+    "category": "IT",
+    "title": "Windows Patch Audit",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-12",
+    "category": "IT",
+    "title": "Backup and Restore Drill",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-13",
+    "category": "IT",
+    "title": "Virtual Machine Deployment",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-14",
+    "category": "IT",
+    "title": "Endpoint Inventory Script",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-15",
+    "category": "IT",
+    "title": "Network Connectivity Toolkit",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-16",
+    "category": "IT",
+    "title": "Remote Support Runbook",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-17",
+    "category": "IT",
+    "title": "Microsoft 365 Support Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-18",
+    "category": "IT",
+    "title": "Printer Troubleshooting Guide",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-19",
+    "category": "IT",
+    "title": "Incident Escalation Workflow",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-20",
+    "category": "IT",
+    "title": "Server Health Monitor",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-21",
+    "category": "IT",
+    "title": "Syslog Collection Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-22",
+    "category": "IT",
+    "title": "Firewall Rules Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-23",
+    "category": "IT",
+    "title": "VPN Troubleshooting Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-24",
+    "category": "IT",
+    "title": "IT Asset Lifecycle Tracker",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-25",
+    "category": "IT",
+    "title": "Password Policy Audit",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-26",
+    "category": "IT",
+    "title": "Disk Capacity Alerting",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-27",
+    "category": "IT",
+    "title": "Service Desk Knowledge Base",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-28",
+    "category": "IT",
+    "title": "Disaster Recovery Exercise",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-29",
+    "category": "IT",
+    "title": "Infrastructure Diagram Generator",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "it-30",
+    "category": "IT",
+    "title": "IT Operations Dashboard",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-01",
+    "category": "Software",
+    "title": "Personal Portfolio Website",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-02",
+    "category": "Software",
+    "title": "Task Manager API",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-03",
+    "category": "Software",
+    "title": "Inventory Management App",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-04",
+    "category": "Software",
+    "title": "Authentication Demo",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-05",
+    "category": "Software",
+    "title": "REST API Client",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-06",
+    "category": "Software",
+    "title": "SQL CRUD Application",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-07",
+    "category": "Software",
+    "title": "Expense Tracker",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-08",
+    "category": "Software",
+    "title": "Appointment Scheduler",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-09",
+    "category": "Software",
+    "title": "Help Desk Portal",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-10",
+    "category": "Software",
+    "title": "Unit Testing Workshop",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-11",
+    "category": "Software",
+    "title": "Weather Dashboard Demo",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-12",
+    "category": "Software",
+    "title": "Markdown Notes App",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-13",
+    "category": "Software",
+    "title": "File Organizer CLI",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-14",
+    "category": "Software",
+    "title": "Contact Manager",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-15",
+    "category": "Software",
+    "title": "Issue Tracker",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-16",
+    "category": "Software",
+    "title": "URL Shortener",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-17",
+    "category": "Software",
+    "title": "Book Catalog",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-18",
+    "category": "Software",
+    "title": "CSV Import Tool",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-19",
+    "category": "Software",
+    "title": "Simple E-commerce Backend",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-20",
+    "category": "Software",
+    "title": "Role-Based Access Control",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-21",
+    "category": "Software",
+    "title": "Log Parser",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-22",
+    "category": "Software",
+    "title": "Realtime Chat Prototype",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-23",
+    "category": "Software",
+    "title": "Form Validation Library",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-24",
+    "category": "Software",
+    "title": "Job Application Tracker",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-25",
+    "category": "Software",
+    "title": "API Documentation Site",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-26",
+    "category": "Software",
+    "title": "Dockerized Web App",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-27",
+    "category": "Software",
+    "title": "CI Pipeline Demo",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-28",
+    "category": "Software",
+    "title": "Search and Filter UI",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-29",
+    "category": "Software",
+    "title": "Notification Service",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "software-30",
+    "category": "Software",
+    "title": "Full Stack Admin Panel",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-01",
+    "category": "Data",
+    "title": "Sales KPI Dashboard",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-02",
+    "category": "Data",
+    "title": "Customer Support Metrics",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-03",
+    "category": "Data",
+    "title": "Excel Data Cleaning",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-04",
+    "category": "Data",
+    "title": "SQL Exploratory Analysis",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-05",
+    "category": "Data",
+    "title": "Python Pandas Notebook",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-06",
+    "category": "Data",
+    "title": "HR Attrition Exploration",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-07",
+    "category": "Data",
+    "title": "Customer Segmentation",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-08",
+    "category": "Data",
+    "title": "Inventory Turnover Analysis",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-09",
+    "category": "Data",
+    "title": "Financial Budget Dashboard",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-10",
+    "category": "Data",
+    "title": "Incident Trend Analysis",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-11",
+    "category": "Data",
+    "title": "Website Traffic Analytics",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-12",
+    "category": "Data",
+    "title": "Marketing Funnel Analysis",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-13",
+    "category": "Data",
+    "title": "Public Transport Data Study",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-14",
+    "category": "Data",
+    "title": "Data Quality Audit",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-15",
+    "category": "Data",
+    "title": "ETL CSV to SQL",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-16",
+    "category": "Data",
+    "title": "SQL Window Functions Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-17",
+    "category": "Data",
+    "title": "Time Series Forecast Demo",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-18",
+    "category": "Data",
+    "title": "Churn Risk Exploration",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-19",
+    "category": "Data",
+    "title": "Customer Satisfaction Survey",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-20",
+    "category": "Data",
+    "title": "E-commerce Cohort Analysis",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-21",
+    "category": "Data",
+    "title": "Operational SLA Dashboard",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-22",
+    "category": "Data",
+    "title": "Data Dictionary Project",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-23",
+    "category": "Data",
+    "title": "A/B Testing Simulation",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-24",
+    "category": "Data",
+    "title": "Geographic Data Visualization",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-25",
+    "category": "Data",
+    "title": "Power BI Executive Dashboard",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-26",
+    "category": "Data",
+    "title": "Spreadsheet Automation",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-27",
+    "category": "Data",
+    "title": "Anomaly Detection Demo",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-28",
+    "category": "Data",
+    "title": "Open Data Costa Rica Study",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-29",
+    "category": "Data",
+    "title": "SQL Query Optimization Lab",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  },
+  {
+    "id": "data-30",
+    "category": "Data",
+    "title": "End-to-End Analytics Pipeline",
+    "status": "planned",
+    "started_at": null,
+    "completed_at": null,
+    "notes": "Proyecto propuesto. Pendiente de implementación, pruebas y evidencia."
+  }
+]
