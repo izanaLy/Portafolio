@@ -67,6 +67,16 @@ Las pruebas nuevas se ejecutaron contra el código anterior, en copias temporale
 
 (Una primera comprobación del cargador anterior se interrumpió con un error de importación, porque `parse_dataset` aún no existía; por eso se repitió solo con las pruebas del CLI.)
 
+**Revalidación (2026-11-04).** Las cifras de 13 y 31 fallos las produjo una ejecución anterior. Se volvieron a medir de forma independiente en copias temporales fuera del repositorio (Python 3.13.18, pytest 9.1.1) y **se reprodujeron exactamente**:
+
+| Prueba | Cómo se obtuvo el «código anterior» | Resultado medido |
+|---|---|---|
+| Política crítica desactivada | copia de `rules.py` con `if workaround_available is True and critical:` cambiado por `if False and critical:` (único cambio, verificado con `diff`); suite completa | 13 fallaron, 174 pasaron |
+| Cargador anterior, solo CLI | `dataset.py` tomado de `git show cfdac76:...` (no contiene `parse_dataset`); solo `tests/test_cli.py` | 31 fallaron, 21 pasaron |
+| Cargador anterior, suite completa | el mismo `dataset.py` antiguo | se interrumpe en la colección: `ImportError: cannot import name 'parse_dataset'` (por eso la fila anterior usa solo `test_cli.py`) |
+
+La primera fila simula la ausencia de la política con una mutación mínima, no con el commit anterior completo: demuestra que las pruebas detectan esa regresión concreta, pero no es una reconstrucción exacta del código de entonces.
+
 ## Ronda 1 — historial de ejecuciones (93 pruebas)
 
 1. **Primera comparación de reglas contra etiquetas esperadas:** 23 de 24 tickets coincidían. TKT-0011 («Teams no abre») se clasificaba como `software` en vez de `correo_colaboracion`, porque las frases «se cierra» y «no abre» (peso 3 y 2) sumaban más que «teams» (peso 3). Se redujo el peso de esos síntomas genéricos a 1, con el criterio de que el nombre del producto identifica mejor la categoría. **Este ajuste se hizo después de ver el resultado**, por lo que la prueba de regresión no es una validación independiente.
