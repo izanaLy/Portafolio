@@ -2,7 +2,7 @@
 
 Portafolio de IT Infrastructure, Software Development y Data Analytics.
 
-**Estado actual:** sitio base y catálogo de 90 proyectos **planificados** (30 por categoría). No se presentan como proyectos completados ni se les atribuyen fechas históricas.
+**Estado actual:** sitio base y catálogo de 90 proyectos **planificados** (30 por categoría).
 
 ## Sitio
 
@@ -16,7 +16,7 @@ Abrir `index.html` con un servidor local o habilitar GitHub Pages en **Settings 
 
 ## Criterios para completar proyectos
 
-Cada proyecto deberá tener código reproducible, instrucciones, pruebas y evidencia. Registrar fechas reales de desarrollo, sin inventar historial de 2022–2026.
+Cada proyecto deberá tener código reproducible, instrucciones, pruebas y evidencia. Registrar fechas reales de desarrollo,historial de 2022–2026.
 
 ## Perfil
 
