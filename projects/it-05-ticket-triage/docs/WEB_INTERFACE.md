@@ -4,7 +4,7 @@ Implementada y verificada el 2026-11-05 (UTC), sobre `e35cf04` de PR #2, en una 
 
 ## Qué incorpora
 
-- Portafolio con proyecto destacado y enlace funcional a la demo. El catálogo conserva los 90 registros y sus estados reales (89 planificados, 1 en revisión).
+- Portafolio con proyecto destacado y enlace funcional a la demo. El catálogo conserva los 90 registros y sus estados reales (89 planificados, 1 completado).
 - Panel con 24 casos sintéticos, filtros P1–P4, búsqueda y detalle de impacto, urgencia, destino y razones.
 - Laboratorio con tres escenarios iniciales y formulario editable. Las decisiones vienen de `ticket_triage.triage`, sin reconstruir las reglas en JavaScript.
 - API HTTP de biblioteca estándar, local por defecto, validación del esquema existente, límite de 16 KiB, rechazo de POST de otro origen y restricción de archivos servidos.
@@ -85,7 +85,7 @@ Los PR #2 y #3 se integraron en `main` en `41c80be`. La prueba de Windows se reg
 
 ## Validación manual en Windows — 2026-11-06
 
-Copia de referencia: ZIP de `41c80be0e170f337f5b06a909072b95c02d16cfa` indicado para la prueba. Las capturas no incluyen un SHA ni las versiones exactas de Windows, Python y Microsoft Edge.
+Se indicó usar el ZIP de `41c80be`. Los archivos de la demo en `41c80be` y `facb9ce` son idénticos. Las capturas no permiten confirmar cuál se usó, ni identificar las versiones exactas de Windows, Python y Microsoft Edge.
 
 1. El lanzador abrió la consola y anunció la URL local de Triage Studio en el puerto 8001.
 2. El portafolio cargó en Microsoft Edge desde el servidor local.
