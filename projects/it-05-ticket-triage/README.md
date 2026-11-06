@@ -4,7 +4,7 @@ Simulador en Python que **clasifica y prioriza tickets de soporte técnico** con
 
 - Núcleo solo con la **biblioteca estándar** de Python (sin dependencias ni APIs de pago).
 - Datos **100 % sintéticos** (ver [`data/synthetic_tickets.json`](data/synthetic_tickets.json)).
-- Pruebas con **pytest** (187 pruebas; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
+- Pruebas con **pytest** (234 pruebas en esta rama: 187 del motor y CLI, 47 de la interfaz web, el servidor HTTP y el lanzador; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
 
 > **Estado:** implementado y probado localmente el 2026-11-04. La revisión técnica del PR #2 pidió ajustes (validación del cargador, política de urgencia en seguridad y documentación del canal de seguridad); están aplicados y pendientes de revisión final. Es una **demostración de reglas sobre datos ficticios**: no se ha usado con tickets reales ni se presentan métricas de rendimiento operativo.
 
@@ -28,6 +28,14 @@ projects/it-05-ticket-triage/
 - Python 3.9 o superior (probado con 3.13.18).
 - Para ejecutar el simulador no hay que instalar nada.
 - Para las pruebas: `pip install pytest`.
+
+## Interfaz web: Triage Studio
+
+Desde la raíz del repositorio, ejecutar `py run-demo.py --open` en Windows o `python3 run-demo.py --open` en macOS/Linux. En Windows también se puede abrir `INICIAR_DEMO.bat` con doble clic.
+
+Incluye una cola con búsqueda y filtros, selección de incidentes con razones, indicadores derivados de los datos y un laboratorio para modificar usuarios afectados y alternativa temporal. Los análisis nuevos llaman al motor Python existente mediante `/api/triage`; no se duplican las reglas en JavaScript.
+
+[Instrucciones, evidencia y limitaciones](docs/WEB_INTERFACE.md). El historial original de 187 pruebas sigue en `docs/TEST_RESULTS.md`.
 
 ## Uso
 
@@ -179,7 +187,7 @@ Cubren validación del modelo, cada regla (incluida la monotonía de la matriz d
 - Los umbrales (por ejemplo, 10 usuarios = impacto alto), la matriz y la lista de señales críticas de seguridad son supuestos de laboratorio, no valores calibrados en una organización concreta ni un SLA/ITIL universal (ver «Parámetros editables»).
 - La excepción de urgencia para señales críticas de seguridad es una lista corta de palabras clave: un incidente grave descrito con otras palabras no activará la excepción.
 - Los datos son ficticios; no se hicieron mediciones de tiempo de resolución, carga ni satisfacción.
-- No hay interfaz web ni integración con sistemas de tickets reales; eso queda para `software-09`.
+- La interfaz web de esta rama es un laboratorio local con datos sintéticos. No hay integración con sistemas de tickets reales ni persistencia; `software-09` sigue pendiente.
 
 ## Trabajo relacionado
 
