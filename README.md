@@ -32,7 +32,7 @@ Con un servidor estático como `py -m http.server 8000` o GitHub Pages se pueden
 
 ## Criterios para completar proyectos
 
-Cada proyecto deberá tener código reproducible, instrucciones, pruebas y evidencia. Registrar fechas reales de desarrollo, sin inventar historial de 2022–2026.
+Cada proyecto deberá tener código reproducible, instrucciones, pruebas y evidencia. Registrar las fechas reales de desarrollo de cada proyecto, sin inventar historial de 2022–2026. Los proyectos planificados todavía no están completados.
 
 ## Perfil
 
