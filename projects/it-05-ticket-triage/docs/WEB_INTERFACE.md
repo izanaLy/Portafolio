@@ -69,6 +69,21 @@ Flujo completo con el motor conectado: abrir la demo desde el portafolio, 24 cas
 - El contraste lo mide un script contra el primer fondo opaco de cada elemento; se excluyen la maqueta y el arte decorativos, que son `aria-hidden`.
 - Los datos y las reglas siguen siendo sintéticos: nada de esto valida las reglas con tickets reales.
 
+## Integración con `main` (simulación, 2026-11-06)
+
+Orden comprobado: `main` (`5e7a14a`) → PR #2 (`e35cf04`) → PR #3 (`be7df06`), en un worktree temporal sin tocar ninguna rama remota.
+
+| Paso | Resultado |
+|---|---|
+| `main` + #2 | Fusión limpia (sin conflicto). Resultado local `d3e75cf`. |
+| (+ #3) | **Conflicto de contenido solo en `README.md`.** El commit `5e7a14a` de `main` y el #3 editan las mismas dos zonas (línea «Estado actual» y «Criterios para completar proyectos»). Resultado local resuelto `f1d3371`. |
+
+Resolución preparada: se conserva la línea «Estado actual» del #3 (89 planificados, `it-05` en revisión, sin fechas históricas) y se corrige la frase rota que dejó `main` («Registrar fechas reales de desarrollo,historial de 2022–2026.») por: «Registrar las fechas reales de desarrollo de cada proyecto, sin inventar historial de 2022–2026. Los proyectos planificados todavía no están completados.» El conflicto nace del cambio en `main`, por eso no se resolvió en las ramas del PR: se aplica al fusionar (o con un commit en `main` que autorice el propietario).
+
+Verificación sobre el resultado combinado `f1d3371` (Python 3.13.18, Node 22.23.4): `python3 -m pytest -q` desde `projects/it-05-ticket-triage` → **234 pasadas**; `node --check` de `app.js` y del script del portafolio; `git diff --check` limpio; navegador (Chrome 153 sin interfaz, emulación móvil) 51 comprobaciones, 0 fallos. El conteo no cambia respecto del PR aislado porque #3 ya incluye las 187 pruebas del #2; solo cambia el README.
+
+Tras fusionar #2, comprobar que #3 apunte a `main`, que su diff contenga únicamente la interfaz y que la suite pase contra esa base. Windows: `INICIAR_DEMO.bat` sigue sin ejecutarse.
+
 ## Alcance
 
 Es un laboratorio educativo sobre reglas y datos ficticios, sin tickets de empresas, cuentas, autenticación, almacenamiento persistente ni conexión a plataformas externas. Los conteos describen el dataset y la sesión, no resultados laborales. La documentación histórica de las pruebas del motor conserva sus cifras y métodos originales.
