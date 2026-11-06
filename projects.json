@@ -39,10 +39,10 @@
     "id": "it-05",
     "category": "IT",
     "title": "Ticket Triage Simulator",
-    "status": "in_review",
+    "status": "completed",
     "started_at": "2026-11-04",
-    "completed_at": null,
-    "notes": "Implementado con datos sintéticos y 187 pruebas pytest que pasan (ver projects/it-05-ticket-triage/docs/TEST_RESULTS.md). Ajustes de la primera revisión aplicados; pendiente de revisión final del pull request. completed_at se registrará al fusionarlo."
+    "completed_at": "2026-11-06",
+    "notes": "IT-05 integrado en main mediante los PR #2 y #3. 234 pruebas automatizadas y flujo validado manualmente en Windows el 2026-11-06. Evidencia en projects/it-05-ticket-triage/docs/WEB_INTERFACE.md."
   },
   {
     "id": "it-06",

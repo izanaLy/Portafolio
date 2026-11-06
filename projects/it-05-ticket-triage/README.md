@@ -4,9 +4,9 @@ Simulador en Python que **clasifica y prioriza tickets de soporte técnico** con
 
 - Núcleo solo con la **biblioteca estándar** de Python (sin dependencias ni APIs de pago).
 - Datos **100 % sintéticos** (ver [`data/synthetic_tickets.json`](data/synthetic_tickets.json)).
-- Pruebas con **pytest** (234 pruebas en esta rama: 187 del motor y CLI, 47 de la interfaz web, el servidor HTTP y el lanzador; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
+- Pruebas con **pytest** (234 pruebas automatizadas: 187 del motor y CLI, 47 de la interfaz web, el servidor HTTP y el lanzador; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
 
-> **Estado:** implementado y probado localmente el 2026-11-04. La revisión técnica del PR #2 pidió ajustes (validación del cargador, política de urgencia en seguridad y documentación del canal de seguridad); están aplicados y pendientes de revisión final. Es una **demostración de reglas sobre datos ficticios**: no se ha usado con tickets reales ni se presentan métricas de rendimiento operativo.
+> **Estado:** integrado en `main` mediante los PR #2 y #3. El recorrido completo se validó en Windows el 2026-11-06 (ver [evidencia de la prueba](docs/WEB_INTERFACE.md#validación-manual-en-windows--2026-11-06)). Es una **demostración de reglas sobre datos ficticios**: no se ha usado con tickets reales ni se presentan métricas de rendimiento operativo.
 
 ## Estructura
 
@@ -187,7 +187,7 @@ Cubren validación del modelo, cada regla (incluida la monotonía de la matriz d
 - Los umbrales (por ejemplo, 10 usuarios = impacto alto), la matriz y la lista de señales críticas de seguridad son supuestos de laboratorio, no valores calibrados en una organización concreta ni un SLA/ITIL universal (ver «Parámetros editables»).
 - La excepción de urgencia para señales críticas de seguridad es una lista corta de palabras clave: un incidente grave descrito con otras palabras no activará la excepción.
 - Los datos son ficticios; no se hicieron mediciones de tiempo de resolución, carga ni satisfacción.
-- La interfaz web de esta rama es un laboratorio local con datos sintéticos. No hay integración con sistemas de tickets reales ni persistencia; `software-09` sigue pendiente.
+- La interfaz web es un laboratorio local con datos sintéticos. No hay integración con sistemas de tickets reales ni persistencia; `software-09` sigue pendiente.
 
 ## Trabajo relacionado
 
