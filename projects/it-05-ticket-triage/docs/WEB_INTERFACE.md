@@ -1,6 +1,6 @@
 # Triage Studio — interfaz web
 
-Implementada y verificada el 2026-11-05 (UTC), sobre `e35cf04` de PR #2, en una rama separada. PR #2 continúa pendiente; esta interfaz no inicia `software-09`.
+Implementada y verificada el 2026-11-05 (UTC), sobre `e35cf04` de PR #2, en una rama separada. El motor y la interfaz se integraron en `main` mediante los PR #2 y #3.
 
 ## Qué incorpora
 
@@ -62,7 +62,6 @@ Flujo completo con el motor conectado: abrir la demo desde el portafolio, 24 cas
 
 ### Limitaciones pendientes
 
-- **`INICIAR_DEMO.bat` no se ejecutó**: la revisión corrió en Linux. Se comprobaron su contenido, sus saltos de línea y su coherencia con el README y con `ticket_triage.web`. Falta una prueba en Windows.
 - Chrome sin interfaz con emulación de móvil. No se probó en teléfonos reales, Safari ni Firefox, ni en GitHub Pages.
 - Las fuentes DM Sans y Space Grotesk se piden a Google Fonts. Sin conexión la página funciona con la fuente sans-serif del sistema, con otra apariencia. No se autoalojaron porque este entorno no puede descargarlas.
 - Sin `Content-Security-Policy` ni `X-Frame-Options`. Es razonable para una demo local con datos sintéticos, pero conviene añadirlas antes de publicar un servidor accesible desde Internet.
@@ -82,7 +81,18 @@ Resolución preparada: se conserva la línea «Estado actual» del #3 (89 planif
 
 Verificación sobre el resultado combinado `f1d3371` (Python 3.13.18, Node 22.23.4): `python3 -m pytest -q` desde `projects/it-05-ticket-triage` → **234 pasadas**; `node --check` de `app.js` y del script del portafolio; `git diff --check` limpio; navegador (Chrome 153 sin interfaz, emulación móvil) 51 comprobaciones, 0 fallos. El conteo no cambia respecto del PR aislado porque #3 ya incluye las 187 pruebas del #2; solo cambia el README.
 
-Tras fusionar #2, comprobar que #3 apunte a `main`, que su diff contenga únicamente la interfaz y que la suite pase contra esa base. Windows: `INICIAR_DEMO.bat` sigue sin ejecutarse.
+Los PR #2 y #3 se integraron en `main` en `41c80be`. La prueba de Windows se registra por separado.
+
+## Validación manual en Windows — 2026-11-06
+
+Copia de referencia: ZIP de `41c80be0e170f337f5b06a909072b95c02d16cfa` indicado para la prueba. Las capturas no incluyen un SHA ni las versiones exactas de Windows, Python y Microsoft Edge.
+
+1. El lanzador abrió la consola y anunció la URL local de Triage Studio en el puerto 8001.
+2. El portafolio cargó en Microsoft Edge desde el servidor local.
+3. «Abrir experiencia» llevó a la demo, que mostró 24 casos y «Motor local conectado».
+4. El escenario de ransomware con alternativa temporal generó `LAB-0001` como P1, con escalación inmediata al equipo de seguridad y las razones visibles. El ticket apareció en la bandeja y el total subió de 24 a 25.
+
+El recorrido fue ejecutado por el usuario y verificado mediante capturas. Esta comprobación manual es independiente de las 234 pruebas automatizadas.
 
 ## Alcance
 

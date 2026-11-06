@@ -2,7 +2,7 @@
 
 Portafolio de IT Infrastructure, Software Development y Data Analytics.
 
-**Estado actual:** catálogo de 90 proyectos: 89 planificados y `it-05` implementado, con PR en revisión. Esta rama incorpora el portafolio visual y la demo interactiva Triage Studio. No se atribuyen fechas históricas ni experiencia laboral a los ejercicios.
+**Estado actual:** catálogo de 90 proyectos: 89 planificados y `it-05` completado. El portafolio incluye la demo interactiva Triage Studio, con 234 pruebas automatizadas y una validación manual en Windows. No se atribuyen fechas históricas ni experiencia laboral a los ejercicios.
 
 ## Sitio
 
