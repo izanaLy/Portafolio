@@ -4,7 +4,7 @@ Simulador en Python que **clasifica y prioriza tickets de soporte técnico** con
 
 - Núcleo solo con la **biblioteca estándar** de Python (sin dependencias ni APIs de pago).
 - Datos **100 % sintéticos** (ver [`data/synthetic_tickets.json`](data/synthetic_tickets.json)).
-- Pruebas con **pytest** (200 pruebas en esta rama: 187 del motor y CLI, 13 de la interfaz HTTP; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
+- Pruebas con **pytest** (234 pruebas en esta rama: 187 del motor y CLI, 47 de la interfaz web, el servidor HTTP y el lanzador; resultados en [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md)).
 
 > **Estado:** implementado y probado localmente el 2026-11-04. La revisión técnica del PR #2 pidió ajustes (validación del cargador, política de urgencia en seguridad y documentación del canal de seguridad); están aplicados y pendientes de revisión final. Es una **demostración de reglas sobre datos ficticios**: no se ha usado con tickets reales ni se presentan métricas de rendimiento operativo.
 

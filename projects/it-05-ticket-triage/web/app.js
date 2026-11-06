@@ -7,7 +7,9 @@ const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':
 const badge = p => `<span class="priority ${escapeHTML(p)}">${escapeHTML(p)}</span>`;
 
 async function request(path, options = {}) {
-  const response = await fetch(path, {...options, signal: AbortSignal.timeout(7000)});
+  let response;
+  try { response = await fetch(path, {...options, signal: AbortSignal.timeout(7000)}); }
+  catch { throw new Error('No se pudo contactar al motor local. Revisá que INICIAR_DEMO.bat siga abierto.'); }
   const type = response.headers.get('content-type') || '';
   if (!type.includes('application/json')) throw new Error('El motor local no está disponible. Abrí INICIAR_DEMO.bat para analizar casos nuevos.');
   const result = await response.json();

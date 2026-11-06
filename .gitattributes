@@ -1,0 +1,2 @@
+# cmd.exe necesita CRLF en los archivos por lotes, incluso en descargas ZIP
+*.bat text eol=crlf
